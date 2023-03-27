@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Ideas;
 
+use App\Enums\Ideas\Status;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
@@ -22,7 +24,15 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'category_id' => 'required|integer|exists:categories,id',
+            'author_name' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'status' => [
+                'required',
+                'integer',
+                Rule::in(Status::getValues()),
+            ],
         ];
     }
 }
