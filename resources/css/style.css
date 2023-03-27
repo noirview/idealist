@@ -1151,7 +1151,6 @@ a:hover {
    transform: rotate(180deg);
 }
 .select__list {
-   display: none;
    position: absolute;
    top: 100%;
    left: 0;
